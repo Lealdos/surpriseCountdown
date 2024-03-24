@@ -8,11 +8,12 @@ interface Props {
 }
 
 const { song, poem, date, imagen } = Astro.props;
-const day = date && new Date(date).toLocaleDateString();
+const day = date && new Date(date).getDate();
 ---
 
 <article
-    class={`bg-[url('${imagen}')] bg-cover bg-center rounded-md h-full p-2 flex flex-col items-center justify-around `}
+    style=`background-image: url(${imagen}); `
+    class={` bg-cover bg-center rounded-md h-full p-2 flex flex-col items-center justify-around `}
 >
     {
         date && (
@@ -34,8 +35,7 @@ const day = date && new Date(date).toLocaleDateString();
         display: flex;
         flex-direction: column;
         padding: 2px;
-        background-image: none;
-        background-size: 400%;
+        background-size: cover;
         border-radius: 7px;
         background-position: 100%;
         transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
