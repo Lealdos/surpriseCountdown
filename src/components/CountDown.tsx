@@ -40,7 +40,7 @@ export function Countdown({ date }: Props) {
     }, []);
 
     return (
-        <p className='text-base text-balance text-center'>
+        <p className='text-base text-balance text-center text-yellow-500 font-semibold italic'>
             {countdown?.days} d / {countdown?.hours} H / {countdown?.minutes} /
             M /{countdown?.seconds} S
         </p>
