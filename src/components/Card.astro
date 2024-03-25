@@ -1,32 +1,49 @@
 ---
-import { Countdown } from './CountDown';
+import { Countdown } from "./CountDown";
 interface Props {
-    song?: string;
-    poem?: string;
-    date?: string;
+    song: string;
+    poem: string;
+    date: string;
     imagen: string;
+    backImage: string;
 }
+const { song, poem, date, imagen, backImage } = Astro.props;
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const monthName = month[new Date(date).getMonth()];
+const fecha = new Date(date).getDate();
+const day = weekday[new Date(date).getDay()];
+const dayName = day
 
-const { song, poem, date, imagen } = Astro.props;
-const day = date && new Date(date).getDate();
 ---
-
-<article
-    style=`background-image: url(${imagen}); `
-    class={` bg-cover bg-center rounded-md h-full p-2 flex flex-col items-center justify-around `}
->
-    {
-        date && (
-            <div class='flex flex-col items-center '>
-                <h1 class='text-xl  w-10/12'>Poema disponible el dia: {day}</h1>
-                <Countdown date={date} client:only='react' />
-            </div>
-        )
-    }
-    <h2>{song}</h2>
-    <p class='text-red-500'>
-        {poem}
-    </p>
+<article class="flip-container">
+    <div class="flipper">
+        <div
+            class="front bg-cover bg-center rounded-md h-full p-2"
+            style=`background-image: url(${imagen}); `
+        >
+            {
+                date && (
+                    <div class="flex flex-col items-center ">
+                        <h1 class="text-xl  w-10/12">
+                            Poema disponible el dia: {dayName} {fecha}  {monthName}
+                        </h1>
+                        <Countdown date={date} client:only="react" />
+                    </div>
+                )
+            }
+            <button>prueba <button>
+        </div>
+        <article
+            class=`back bg-cover bg-center rounded-md h-full p-2 `
+            style=`background-image: url(${backImage}); `
+        >
+            <h2>{song}</h2>
+            <p class="text-red-500">
+                {poem}
+            </p>
+        </article>
+    </div>
 </article>
 
 <style>
@@ -66,5 +83,52 @@ const day = date && new Date(date).getDate();
     }
     .link-card:is(:hover, :focus-within) h2 {
         color: rgb(var(--accent-light));
+    }
+
+    /* CSS */
+
+    /* entire container, keeps perspective */
+    .flip-container {
+        perspective: 1000px;
+    }
+    /* flip the pane when hovered */
+    .flip-container:hover .flipper,
+    .flip-container.hover .flipper {
+        transform: rotateY(180deg);
+    }
+
+    .flip-container,
+    .front,
+    .back {
+        width: 320px;
+        height: 420px;
+    }
+
+    /* flip speed goes here */
+    .flipper {
+        transition: 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    /* hide back of pane during swap */
+    .front,
+    .back {
+        backface-visibility: hidden;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* front pane, placed above back */
+    .front {
+        z-index: 2;
+        /* for firefox 31 */
+        transform: rotateY(0deg);
+    }
+
+    /* back, initially hidden pane */
+    .back {
+        transform: rotateY(180deg);
     }
 </style>
