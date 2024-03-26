@@ -41,11 +41,11 @@ const countDownFinish = calculateCountdown(date) === null? false : true
 ---
 
 <div class="card">
-  <div
-    class="card-front bg-cover bg-center rounded-md h-full flex flex-col justify-between"
+  <article
+    class="card-front bg-cover bg-center rounded-md flex flex-col justify-between"
     style=`background-image: url(${imagen}); `
   >
-    <div class="flex flex-col items-center bg-black/80 rounded p-1">
+    <div class="flex flex-col items-center bg-black/80 rounded p-1 w-fit h-max ">
       <h1 class="text-xl w-10/12">
         Poema disponible el dia: {dayName}
         {fecha}
@@ -56,14 +56,15 @@ const countDownFinish = calculateCountdown(date) === null? false : true
       <button disabled={countDownFinish} >prueba </button>
     </div>
 
-  </div>
+  </article>
 
   <article
     class="card-back bg-cover bg-center rounded-md h-full p-2 flex flex-col justify-between"
     style=`background-image: url(${backImage}); `
   >
+  <div class="flex flex-col items-center bg-black/80 rounded p-1  ">  
     <h2>{song}</h2>
-    <p class="text-black italic">
+    <p class="text-pink-500 italic">
       {poem}
     </p>
     <button class="rounded-md bg-green-600" >prueba </button>
@@ -74,6 +75,7 @@ const countDownFinish = calculateCountdown(date) === null? false : true
     >
       escucha la cancion
     </a>
+  </div>
   </article>
 </div>
 
