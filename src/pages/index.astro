@@ -5,36 +5,36 @@ import { info } from "../data.json";
 ---
 
 <Layout title="Regalo de concierto">
-    <main class="">
-        {
-            info.map((item) => {
-                return (
-                    <Card
-                        date={item.date}
-                        imagen={item.FrontImagen}
-                        backImage={item.backImagen}
-                        song={item.tittle}
-                        poem={item.poem}
-                    />
-                );
-            })
-        }
-    </main>
+  <main class="">
+    {
+      info.map((item) => {
+        return (
+          <Card
+            date={item.date}
+            imagen={item.FrontImagen}
+            backImage={item.backImagen}
+            song={item.tittle}
+            poem={item.poem}
+          />
+        );
+      })
+    }
+  </main>
 </Layout>
 
 <style>
-    main {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 0 auto;
-        padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 2rem);
-        color: white;
-        font-size: 20px;
-        line-height: 1.6;
-        height: 100%;
-    }
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 1rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+    height: 100%;
+  }
 </style>

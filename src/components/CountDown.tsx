@@ -1,52 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import {calculateCountdown} from '@lib/countDown.ts'
 interface Props {
-    date: string;
+  date: string;
 }
 
 export function Countdown({ date }: Props) {
-    const [countdown, setCountdown] = useState(calculateCountdown());
+  const [countdown, setCountdown] = useState(calculateCountdown(date));
 
-    function calculateCountdown() {
-        const targetDate = new Date(date);
-        const now = new Date();
-        if (targetDate < now) {
-            return null;
-        }
-        const difference = targetDate.getTime() - now.getTime();
+  // function calculateCountdown() {
+  //   const targetDate = new Date(date);
+  //   const now = new Date();
+  //   if (targetDate < now) {
+  //     return null;
+  //   }
+  //   const difference = targetDate.getTime() - now.getTime();
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-            (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  //   const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  //   const hours = Math.floor(
+  //     (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  //   );
+  //   const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  //   const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        return { days, hours, minutes, seconds };
-    }
+  //   return { days, hours, minutes, seconds };
+  // }
 
-    useEffect(() => {
-        // Function to calculate the time remaining
+  useEffect(() => {
+    // Function to calculate the time remaining
 
-        // Update countdown every second
-        const interval = setInterval(() => {
-            setCountdown(calculateCountdown());
-        }, 1000);
+    // Update countdown every second
+    const interval = setInterval(() => {
+      setCountdown(calculateCountdown(date));
+    }, 1000);
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
-     
-    if (countdown === null) {
-        return <p>Listo para abrir</p>;
-    }else {
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  if (countdown === null) {
+    return <p>Listo para abrir</p>;
+  } else {
     return (
-        
-        <p className='text-base text-balance text-center text-yellow-500 font-semibold italic'>
-            {countdown?.days} d / {countdown?.hours} H / {countdown?.minutes} /
-            M /{countdown?.seconds} S
-        </p>
-    );}
+      <p className="text-base text-balance text-center text-yellow-500 font-semibold italic">
+        {countdown?.days}D / {countdown?.hours}H / {countdown?.minutes}M /
+        {countdown?.seconds}S
+      </p>
+    );
+  }
 }
