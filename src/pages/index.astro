@@ -1,47 +1,47 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import { info } from "../data.json";
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { info } from '../data.json';
 ---
 
-<Layout title="Regalo de concierto">
-  <main class="">
-    {
-      info.map((item,index) => {
-        return (
-          <Card
-            date={item.date}
-            imagen={item.FrontImagen}
-            backImage={item.backImagen}
-            song={item.tittle}
-            poem={item.poem}
-            indexControl={index}
-          />
-        );
-      })
-    }
-  </main>
+<Layout title='Regalo de concierto'>
+    <main class=''>
+        {
+            info.map((item, index) => {
+                return (
+                    <Card
+                        date={item.date}
+                        imagen={item.FrontImagen}
+                        backImage={item.backImagen}
+                        song={item.tittle}
+                        poem={item.poem}
+                        indexControl={index}
+                    />
+                );
+            })
+        }
+    </main>
 </Layout>
 
 <style>
-  main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 0 auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 1rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-    height: 100%;
-  }
+    main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0 auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 1rem);
+        color: white;
+        font-size: 20px;
+        line-height: 1.6;
+        height: 100%;
+    }
 </style>
 
 <script>
-  import { getFromLocalStorage } from "../lib/LocalStorage";
+    import { getFromLocalStorage } from '../lib/LocalStorage';
 
-  getFromLocalStorage('pruebita')
+    getFromLocalStorage('pruebita');
 </script>
