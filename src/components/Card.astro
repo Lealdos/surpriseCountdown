@@ -1,14 +1,15 @@
 ---
 import { Countdown } from "./CountDown";
-import {calculateCountdown} from '@lib/countDown.ts'
+import { calculateCountdown } from "@lib/countDown.ts";
 interface Props {
   song: string;
   poem: string;
   date: string;
   imagen: string;
   backImage: string;
+  indexControl: number;
 }
-const { song, poem, date, imagen, backImage } = Astro.props;
+const { song, poem, date, imagen, backImage, indexControl } = Astro.props;
 const weekday = [
   "Sunday",
   "Monday",
@@ -37,7 +38,7 @@ const fecha = new Date(date).getDate();
 const day = weekday[new Date(date).getDay()];
 const dayName = day;
 
-const countDownFinish = calculateCountdown(date) === null? false : true 
+const countDownFinish = calculateCountdown(date) === null ? false : true;
 ---
 
 <div class="card">
@@ -45,7 +46,7 @@ const countDownFinish = calculateCountdown(date) === null? false : true
     class="card-front bg-cover bg-center rounded-md flex flex-col justify-between"
     style=`background-image: url(${imagen}); `
   >
-    <div class="flex flex-col items-center bg-black/80 rounded p-1 w-fit h-max ">
+    <div class="flex flex-col items-center bg-black/80 rounded p-1 w-fit h-max">
       <h1 class="text-xl w-10/12">
         Poema disponible el dia: {dayName}
         {fecha}
@@ -53,29 +54,28 @@ const countDownFinish = calculateCountdown(date) === null? false : true
       </h1>
       <Countdown date={date} client:only="react" />
 
-      <button disabled={countDownFinish} >prueba </button>
+      <button disabled={countDownFinish}>prueba </button>
     </div>
-
   </article>
 
   <article
     class="card-back bg-cover bg-center rounded-md h-full p-2 flex flex-col justify-between"
     style=`background-image: url(${backImage}); `
   >
-  <div class="flex flex-col items-center bg-black/80 rounded p-1  ">  
-    <h2>{song}</h2>
-    <p class="text-pink-500 italic">
-      {poem}
-    </p>
-    <button class="rounded-md bg-green-600" >prueba </button>
-    <a
-      rel="noopener"
-      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      target="_blank"
-    >
-      escucha la cancion
-    </a>
-  </div>
+    <div class="flex flex-col items-center bg-black/80 rounded p-1">
+      <h2>{song}</h2>
+      <p class="text-pink-500 italic">
+        {poem}
+      </p>
+      <button class="rounded-md bg-green-600">prueba </button>
+      <a
+        rel="noopener"
+        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        target="_blank"
+      >
+        escucha la cancion
+      </a>
+    </div>
   </article>
 </div>
 
@@ -111,12 +111,76 @@ const countDownFinish = calculateCountdown(date) === null? false : true
 </style>
 
 <script>
+  interface MyData {
+    
+    name: string;
+    value: number;
+  }
+
+  // Function to retrieve data from local storage
+  export function getFromLocalStorage<T>(key: string): [] | null {
+    const storage = localStorage.getItem("pruebita");
+    let checkParsedTodos: [] | null;
+    if (!storage) {
+      localStorage.setItem('pruebita', JSON.stringify([]));
+      checkParsedTodos = [];
+      return checkParsedTodos;
+    } else {
+      return (checkParsedTodos = JSON.parse(storage));
+    }
+  }
+
+  // Function to store data in local storage
+  export function setToLocalStorage<T>(key: string, value: T): void {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(
+        `Error storing data in localStorage for key: ${key}`,
+        error
+      );
+    }
+  }
+
+  // Function to create or update an item
+  export function createOrUpdateItem<T>(key: string, data: T): void {
+    setToLocalStorage(key, data);
+  }
+
+  // Function to delete an item
+  export function deleteItem(key: string): void {
+    localStorage.removeItem(key);
+  }
+
+  // Function to add an item to an array stored in local storage
+  export function addItemToArray(key: string, item: MyData): void {
+  const existingData = getFromLocalStorage<MyData[]>(key);
+
+  if (existingData) {
+    // Ensure type safety when pushing to the array
+    const itemExists = existingData.some(existingItem => existingItem.name === item.name);
+    console.log(itemExists)
+    if (!itemExists) {
+      existingData.push(item);
+      setToLocalStorage(key, existingData);
+    }
+  } else {
+    // Create a new array with the item
+    setToLocalStorage(key, [item]);
+  }
+}
+
+
+
+
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     const buttons = card.querySelectorAll("button");
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
+        addItemToArray("pruebita", { name:'1',value:false } );
+
         card.classList.toggle("show");
       });
     });
