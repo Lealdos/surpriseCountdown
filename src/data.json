@@ -3,7 +3,7 @@
         {
             "tittle": "Intacto",
             "poem": "El viento susurra entre las hojas, mientras la voz de Voz Veis se despliega en el aire.",
-            "date": "03-06-2024,12:30:00",
+            "date": "03-06-2024,12:17:05",
             "FrontImagen": "/img/prueba.jpg",
             "backImagen": "/img/virao.jpg"
         },
@@ -88,20 +88,6 @@
             "tittle": "El Farolito",
             "poem": "Una luz en la oscuridad, una esperanza en momentos difíciles.",
             "date": "04-18-2024,09:50:00",
-            "FrontImagen": "/img/prueba.jpg",
-            "backImagen": "/img/001.jpg"
-        },
-        {
-            "tittle": "Me Quedo",
-            "poem": "A veces, lo mejor es quedarse, aferrarse a lo que amamos.",
-            "date": "04-19-2024,21:15:00",
-            "FrontImagen": "/img/prueba.jpg",
-            "backImagen": "/img/001.jpg"
-        },
-        {
-            "tittle": "El Grito",
-            "poem": "Un grito de libertad, de lucha, de resistencia.",
-            "date": "04-20-2024,14:00:00",
             "FrontImagen": "/img/prueba.jpg",
             "backImagen": "/img/001.jpg"
         }

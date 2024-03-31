@@ -19,12 +19,14 @@ export function Countdown({ date }: Props) {
     }, []);
 
     if (countdown === null) {
-        return <p>Listo para abrir</p>;
+        return <p className='text-2xl'>Listo para abrir</p>;
     } else {
         return (
-            <p className='text-base text-balance text-center text-yellow-500 font-semibold italic'>
+            <p className=' text-balance text-center text-yellow-500 font-semibold italic text-xl'>
+                Faltan <br />
                 {countdown?.days}D / {countdown?.hours}H / {countdown?.minutes}M
-                /{countdown?.seconds}S
+                /{countdown?.seconds}S <br />
+                para abrirlo
             </p>
         );
     }

@@ -28,20 +28,14 @@ import { info } from '../data.json';
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
-        margin: 0 auto;
         padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 1rem);
         color: white;
         font-size: 20px;
         line-height: 1.6;
         height: 100%;
+        color-scheme: dark light;
     }
 </style>
-
-<script>
-    import { getFromLocalStorage } from '../lib/LocalStorage';
-
-    getFromLocalStorage('pruebita');
-</script>

@@ -1,0 +1,39 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { info } from '@root/data.json';
+const { dia } = Astro.params;
+
+const day = dia[dia.length - 1];
+const post = info.find((poem) => {
+    const fecha = new Date(poem.date).getDate();
+    return fecha.toString() === day;
+});
+export function getStaticPaths() {
+    return info.map((poem) => {
+        const fecha = new Date(poem.date).getDate();
+        return {
+            params: {
+                dia: `regalo-del-${fecha}`,
+            },
+        };
+    });
+}
+---
+
+<Layout title='Regalo de concierto'>
+    <a class='text-xl' href='/'>
+        <img class='w-8 h-10 m-1' src='/svg/backArrow.svg' alt='back to home' />
+    </a>
+    <main
+        class='flex flex-col justify-center items-center gap-4 my-10 mx-2 italic'
+    >
+        <h1>{dia.replace(/-/g, ' ')}</h1>
+        <p>{post?.poem}</p>
+        <p>{post?.tittle}</p>
+        <img
+            class='lg:w-1/4 lg:h-1/4 h-3/2 w-3/4 rounded-md'
+            src={post?.backImagen}
+            alt={post?.tittle}
+        />
+    </main>
+</Layout>

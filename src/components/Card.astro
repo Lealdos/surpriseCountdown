@@ -41,13 +41,13 @@ const dayName = day;
 const countDownFinish = calculateCountdown(date) === null ? false : true;
 ---
 
-<div class='card' id={indexControl.toString()}>
+<div class='card' id={fecha.toString()} data-astro-reload>
     <article
         class='card-front bg-cover bg-center rounded-md flex flex-col justify-between'
         style=`background-image: url(${imagen}); `
     >
         <div
-            class='flex flex-col items-center bg-black/80 rounded p-1 w-fit h-max'
+            class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly'
         >
             <h1 class='text-xl w-10/12'>
                 Poema disponible el dia: {dayName}
@@ -55,8 +55,11 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
                 {monthName}
             </h1>
             <Countdown date={date} client:only='react' />
-
-            <button disabled={countDownFinish}>prueba </button>
+            {
+                !countDownFinish && (
+                    <button disabled={countDownFinish}>Abrir </button>
+                )
+            }
         </div>
     </article>
 
@@ -64,19 +67,25 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         class='card-back bg-cover bg-center rounded-md h-full p-2 flex flex-col justify-between'
         style=`background-image: url(${backImage}); `
     >
-        <div class='flex flex-col items-center bg-black/80 rounded p-1'>
-            <h2>{song}</h2>
-            <p class='text-pink-500 italic'>
-                {poem}
-            </p>
-            <button class='rounded-md bg-green-600'>prueba </button>
+        <div
+            class='flex flex-col items-center bg-black/80 rounded-md p-1 h-[500px] justify-evenly'
+        >
+            <h2>La cancion de hoy es:{song}</h2>
             <a
+                class='flex flex-row justify-center items-center gap-2'
                 rel='noopener'
                 href='https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5'
                 target='_blank'
             >
-                escucha la cancion
+                <img src='/Spotify_icon.svg' alt='spotify' />
+                Reproducir cancion
             </a>
+            <p class='text-pink-500 italic truncate text-lg'>
+                {poem}sf'pksajgo['asidfjsado;
+            </p>
+
+            <a href={`/dia/regalo-del-${fecha}`}> poema completo </a>
+            <button class='rounded-md bg-green-600 p-1'>Cerrar</button>
         </div>
     </article>
 </div>
@@ -84,10 +93,9 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
 <style>
     /* CSS */
     .card {
-        width: 200px;
-        height: 300px;
+        width: 450px;
+        height: 550px;
         position: relative;
-        cursor: pointer;
         perspective: 1000px;
         transform-style: preserve-3d;
         transition: rotate 300ms linear;
@@ -110,78 +118,29 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
     .card-back {
         rotate: y 180deg;
     }
+    img {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    p {
+        margin: 0 0.5rem;
+        max-width: 15.45em;
+
+        text-align: center;
+    }
 </style>
 
 <script>
-    interface MyData {
-        name: string;
-        value: boolean;
-    }
+    document.addEventListener('astro:page-load', () => {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card) => {
+            const buttons = card.querySelectorAll('button');
 
-    // Function to retrieve data from local storage
-    export function getFromLocalStorage(): [] | null {
-        const storage = localStorage.getItem('pruebita');
-        let checkParsedTodos: [] | null;
-        if (!storage) {
-            localStorage.setItem('pruebita', JSON.stringify([]));
-            checkParsedTodos = [];
-            return checkParsedTodos;
-        } else {
-            return (checkParsedTodos = JSON.parse(storage));
-        }
-    }
-
-    // Function to store data in local storage
-    export function setToLocalStorage<T>(key: string, value: T): void {
-        try {
-            localStorage.setItem(key, JSON.stringify(value));
-        } catch (error) {
-            console.error(
-                `Error storing data in localStorage for key: ${key}`,
-                error
-            );
-        }
-    }
-
-    // Function to create or update an item
-    export function createOrUpdateItem<T>(key: string, data: T): void {
-        setToLocalStorage(key, data);
-    }
-
-    // Function to delete an item
-    export function deleteItem(key: string): void {
-        localStorage.removeItem(key);
-    }
-
-    // Function to add an item to an array stored in local storage
-    export function addItemToArray(key: string, item: MyData): void {
-        const existingData: MyData[] | null = getFromLocalStorage();
-
-        if (existingData) {
-            // Ensure type safety when pushing to the array
-            const itemExists = existingData.some(
-                (existingItem) => existingItem.name === item.name
-            );
-            console.log(itemExists);
-            if (!itemExists) {
-                existingData.push(item);
-                setToLocalStorage(key, existingData);
-            }
-        } else {
-            // Create a new array with the item
-            setToLocalStorage(key, [item]);
-        }
-    }
-
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card) => {
-        const buttons = card.querySelectorAll('button');
-
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                addItemToArray('pruebita', { name: '1', value: false });
-
-                card.classList.toggle('show');
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    card.classList.toggle('show');
+                });
             });
         });
     });
