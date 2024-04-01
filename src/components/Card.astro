@@ -47,17 +47,22 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         style=`background-image: url(${imagen}); `
     >
         <div
-            class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly'
+            class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly lg:w-[21.5em]'
         >
-            <h1 class='text-xl w-10/12'>
+            <h2 class='text-xl w-10/12 text-balance text-center'>
                 Poema disponible el dia: {dayName}
-                {fecha}
+                {fecha} de
                 {monthName}
-            </h1>
+            </h2>
             <Countdown date={date} client:only='react' />
             {
                 !countDownFinish && (
-                    <button disabled={countDownFinish}>Abrir </button>
+                    <button
+                        class='rounded-md bg-pink-500 p-1 hover:bg-pink-700 w-20'
+                        disabled={countDownFinish}
+                    >
+                        Abrir
+                    </button>
                 )
             }
         </div>
@@ -85,7 +90,9 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
             </p>
 
             <a href={`/dia/regalo-del-${fecha}`}> poema completo </a>
-            <button class='rounded-md bg-green-600 p-1'>Cerrar</button>
+            <button class='rounded-md bg-pink-500 p-1 hover:bg-pink-700 w-20'
+                >Cerrar</button
+            >
         </div>
     </article>
 </div>
@@ -98,7 +105,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         position: relative;
         perspective: 1000px;
         transform-style: preserve-3d;
-        transition: rotate 300ms linear;
+        transition: rotate 400ms linear;
     }
 
     .card.show {
@@ -125,9 +132,15 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
 
     p {
         margin: 0 0.5rem;
-        max-width: 15.45em;
+        max-width: 22.5em;
 
         text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        p {
+            max-width: 15.5em;
+        }
     }
 </style>
 
