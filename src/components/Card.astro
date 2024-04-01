@@ -7,9 +7,9 @@ interface Props {
     date: string;
     imagen: string;
     backImage: string;
-    indexControl: number;
+    indexControl?: number;
 }
-const { song, poem, date, imagen, backImage, indexControl } = Astro.props;
+const { song, poem, date, imagen, backImage } = Astro.props;
 const weekday = [
     'Sunday',
     'Monday',
@@ -41,7 +41,7 @@ const dayName = day;
 const countDownFinish = calculateCountdown(date) === null ? false : true;
 ---
 
-<div class='card' id={fecha.toString()} data-astro-reload>
+<div class='card' id={fecha.toString()}>
     <article
         class='card-front bg-cover bg-center rounded-md flex flex-col justify-between'
         style=`background-image: url(${imagen}); `
@@ -138,7 +138,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
             const buttons = card.querySelectorAll('button');
 
             buttons.forEach((button) => {
-                button.addEventListener('click', (e) => {
+                button.addEventListener('click', () => {
                     card.classList.toggle('show');
                 });
             });
