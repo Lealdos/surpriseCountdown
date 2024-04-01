@@ -11,19 +11,19 @@ interface Props {
 }
 const { song, poem, date, imagen, backImage } = Astro.props;
 const weekday = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
+    'Domingo',
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
 ];
 const month = [
     'January',
     'February',
     'March',
-    'April',
+    'abril',
     'May',
     'June',
     'July',
@@ -49,11 +49,11 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         <div
             class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly'
         >
-            <h1 class='text-xl w-10/12'>
-                Poema disponible el dia: {dayName}
-                {fecha}
+            <h2 class='text-xl w-10/12 text-balance text-center'>
+                Sorpresa disponible el dia: {dayName}
+                {fecha} de
                 {monthName}
-            </h1>
+            </h2>
             <Countdown date={date} client:only='react' />
             {
                 !countDownFinish && (

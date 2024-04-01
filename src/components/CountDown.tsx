@@ -26,7 +26,7 @@ export function Countdown({ date }: Props) {
                 Faltan <br />
                 {countdown?.days}D / {countdown?.hours}H / {countdown?.minutes}M
                 /{countdown?.seconds}S <br />
-                para abrirlo
+                para poder abrirlo
             </p>
         );
     }
