@@ -21,19 +21,22 @@ export function getStaticPaths() {
 ---
 
 <Layout title='Regalo de concierto'>
-    <a class='text-xl' href='/'>
+    <a class='text-xl mx-6' href='/'>
         <img class='w-8 h-10 m-1' src='/svg/backArrow.svg' alt='back to home' />
     </a>
-    <main
-        class='flex flex-col justify-center items-center gap-4 my-10 mx-2 italic'
-    >
+    <div class="flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center">
+
+        <main
+        class='flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-1/2 italic'
+        >
         <h1>{dia.replace(/-/g, ' ')}</h1>
         <p>{post?.poem}</p>
         <p>{post?.tittle}</p>
         <img
-            class='lg:w-1/4 lg:h-1/4 h-3/2 w-3/4 rounded-md'
-            src={post?.backImagen}
-            alt={post?.tittle}
+        class='lg:w-1/4 lg:h-1/4 h-3/2 w-3/4 rounded-md'
+        src={post?.backImagen}
+        alt={post?.tittle}
         />
     </main>
+</div>
 </Layout>

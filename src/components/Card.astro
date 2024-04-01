@@ -8,8 +8,9 @@ interface Props {
     imagen: string;
     backImage: string;
     indexControl?: number;
+    giftLink?: string;
 }
-const { song, poem, date, imagen, backImage } = Astro.props;
+const { song, poem, date, imagen, backImage,giftLink } = Astro.props;
 const weekday = [
     'Sunday',
     'Monday',
@@ -47,7 +48,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         style=`background-image: url(${imagen}); `
     >
         <div
-            class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly lg:w-[21.5em]'
+            class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly sm:w-[21.5em]'
         >
             <h2 class='text-xl w-10/12 text-balance text-center'>
                 Poema disponible el dia: {dayName}
@@ -73,13 +74,13 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         style=`background-image: url(${backImage}); `
     >
         <div
-            class='flex flex-col items-center bg-black/80 rounded-md p-1 h-[500px] justify-evenly'
+            class='flex flex-col items-center bg-black/80 rounded-md p-1 h-[500px] justify-evenly sm:w-[21.5em]'
         >
-            <h2>La cancion de hoy es:{song}</h2>
+            <h2 class="text-xl w-10/12 text-balance text-center">La cancion de hoy es: <br>{song}</h2>
             <a
                 class='flex flex-row justify-center items-center gap-2'
                 rel='noopener'
-                href='https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5'
+                href={giftLink}
                 target='_blank'
             >
                 <img src='/Spotify_icon.svg' alt='spotify' />
