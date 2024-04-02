@@ -2,33 +2,37 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title=`Te amo feliz cumpleaños `>
+<Layout title=`Te amo feliz cumpleaños mi julieta`>
   <a class="text-xl mx-6" href="/">
     <img class="w-8 h-10 m-1" src="/svg/backArrow.svg" alt="back to home" />
   </a>
-  <div class="flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center ">
-
-      <main
-      class="flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-1/2 "
+  <div
+    class="flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center"
   >
-  <h1 class="text-3xl">Te amo feliz cumpleaños</h1>
-  <p class="text-lg italic w-5/6 text-center text-balance">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
-    laudantium maiores et nemo necessitatibus voluptas facilis quae at
-    temporibus, libero odit nulla enim consectetur quis rem corrupti provident
-    unde laboriosam!
-</p>
-<img
-class="lg:w-1/4 lg:h-1/4 h-3/2 w-3/4 rounded-md"
-src="/entrada.jpg"
-alt="entrada a voz veis"
-/>
-<a
-class="text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700"
-'
-href="/concierto.pdf"
-download="/concierto.pdf">Descargar entrada</a
->
-</main>
-</div>
+    <main
+      class="flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-1/2"
+    >
+      <h1 class="text-3xl">Te amo mi julieta, feliz cumpleaños </h1>
+      <div class="flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2">
+        <p class="text-lg italic w-5/6 text-center text-balance">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
+          laudantium maiores et nemo necessitatibus voluptas facilis quae at
+          temporibus, libero odit nulla enim consectetur quis rem corrupti
+          provident unde laboriosam!
+        </p>
+        <div class="flex flex-col justify-center items-center gap-2 w-3/4 h-3/4">
+          <img
+            class="lg:w-full lg:h-2/4  rounded-md"
+            src="/entrada.jpg"
+            alt="entrada a voz veis"
+          />
+          <a
+            class="text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700"
+            href="/concierto.pdf"
+            download="/concierto.pdf">Descargar entrada</a
+          >
+        </div>
+      </div>
+    </main>
+  </div>
 </Layout>

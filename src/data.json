@@ -1,6 +1,14 @@
 {
   "info": [
     {
+      "tittle": "Vas",
+      "poem": "El viento susurra entre las hojas, mientras la voz de Voz Veis se despliega en el aire.",
+      "date": "03-05-2024,20:05:05",
+      "FrontImagen": "/img/prueba.jpg",
+      "backImagen": "/img/virao.jpg",
+      "giftLink": "https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5"
+    },
+    {
       "tittle": "Niña dura",
       "poem": "El viento susurra entre las hojas, mientras la voz de Voz Veis se despliega en el aire.",
       "date": "03-06-2024,00:05:05",
@@ -9,7 +17,7 @@
       "giftLink": "https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5"
     },
     {
-      "tittle": "Donde andabas tu",
+      "tittle": "vas",
       "poem": "Una melodía suave y tranquila, como el susurro de un río.",
       "date": "03-07-2024,18:45:00",
       "FrontImagen": "/img/prueba.jpg",
@@ -25,7 +33,7 @@
       "giftLink": "https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5"
     },
     {
-      "tittle": "Caligrafía",
+      "tittle": "Segundo plato",
       "poem": "Las palabras se entrelazan en el papel, como la voz de Voz Veis se entrelaza con el corazón.",
       "date": "04-09-2024,15:20:00",
       "FrontImagen": "/img/prueba.jpg",
