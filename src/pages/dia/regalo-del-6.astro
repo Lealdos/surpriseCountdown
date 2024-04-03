@@ -55,24 +55,3 @@ import Layout from '@layouts/Layout.astro';
         </main>
     </div>
 </Layout>
-
-<script>
-    import { info } from '@root/data.json';
-
-    document.addEventListener('astro:page-load', () => {
-        const fechaDeHoy = new Date();
-        const verificarDia = info.filter((poem) => {
-            const fechaPost = new Date(poem.date);
-            return fechaPost < fechaDeHoy;
-        });
-        console.log(verificarDia);
-        if (verificarDia) {
-            const fechaRegalo = new Date(verificarDia[1].date);
-
-            if (fechaDeHoy <= fechaRegalo) {
-                console.log('post', fechaRegalo);
-                window.location.href = '/espera-un-poco';
-            }
-        }
-    });
-</script>
