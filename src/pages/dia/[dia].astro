@@ -8,6 +8,7 @@ const post = info.find((poem) => {
   const fecha = new Date(poem.date).getDate();
   return fecha.toString() === day;
 });
+
 export function getStaticPaths() {
   return info.map((poem) => {
     const fecha = new Date(poem.date).getDate();
@@ -18,12 +19,28 @@ export function getStaticPaths() {
     };
   });
 }
+
+
+
 ---
 
 <Layout title=`${post?.tittle}`>
-  <a class="text-xl mx-6" href="/">
-    <img class="w-8 h-10 m-1" src="/svg/backArrow.svg" alt="back to home" />
-  </a>
+  <div class="flex flex-row justify-between items-center">
+    <a class="text-xl mx-6" href="/">
+      <img class="w-8 h-10 m-1" src="/svg/backArrow.svg" alt="back to home" />
+    </a>
+    {
+      day && (
+        <a class="text-xl mx-6" href={`/dia/regalo-del-${Number(day) + 1}`}>
+          <img
+            class="w-8 h-10 m-1"
+            src="/svg/forwardArrow.svg"
+            alt="next page"
+          />
+        </a>
+      )
+    }
+  </div>
   <div
     class="flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center"
   >
@@ -44,19 +61,19 @@ export function getStaticPaths() {
         <div
           class="flex flex-col justify-center items-center gap-2 w-3/4 h-3/4"
         >
-        <h2 class="text-2xl"></h2>
+          <h2 class="text-2xl"></h2>
           <img
             class="object-cover rounded-md"
             src={post?.backImagen}
             alt={post?.tittle}
           />
           <a
-            class="flex flex-row justify-center items-center gap-2"
+            class="flex flex-row justify-center items-center gap-2 text-balance"
             rel="noopener"
             href={post?.giftLink}
             target="_blank"
           >
-            <img class="w-8 h-8" src="/Spotify_icon.svg" alt="spotify" />
+            <img class="w-6 h-6" src="/Spotify_icon.svg" alt="spotify" />
             Reproducir cancion ' {post?.tittle.toLocaleLowerCase()} '
           </a>
         </div>
@@ -64,3 +81,26 @@ export function getStaticPaths() {
     </main>
   </div>
 </Layout>
+
+
+<script>
+  import { info } from "@root/data.json";
+
+
+const fechaDeHoy = new Date()
+const verificarDia = info.find((poem) => {
+  const fecha = new Date(poem.date).getDay();
+  return fecha === fechaDeHoy.getDay();
+})
+
+if  (verificarDia) {
+  const   prueba2 = new Date(verificarDia.date)
+  if (fechaDeHoy <= prueba2 ) {
+    window.location.href = `/`
+  } 
+
+}
+
+
+
+</script>
