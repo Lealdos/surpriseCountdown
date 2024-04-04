@@ -1,5 +1,23 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import { info } from '@root/data.json';
+
+export const prerender = false;
+
+const post = info.find((poem) => {
+    const fecha = new Date(poem.date).getDate();
+    return fecha.toString() === '6';
+});
+
+console.log(post);
+if (post) {
+    const availableDay = new Date(post?.date);
+    const Today = new Date();
+    if (availableDay > Today) {
+        console.log('available');
+        return Astro.redirect('/espera-un-poco');
+    }
+}
 ---
 
 <Layout title=`Te amo feliz cumpleaños mi julieta`>

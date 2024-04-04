@@ -1,107 +1,93 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { info } from "@root/data.json";
+import Layout from '@layouts/Layout.astro';
+import { info } from '@root/data.json';
 const { dia } = Astro.params;
 
-const dayMatch = dia.match(/\d+/g);
-const day = dayMatch ? dayMatch[0] : null;
-leo();
+export const prerender = false;
 
-export function getStaticPaths() {
-  return info.map((poem) => {
-    const fecha = new Date(poem.date).getDate();
-    return {
-      params: {
-        dia: `regalo-del-${fecha}`,
-      },
-    };
-  });
-}
+const dayMatch = dia?.match(/\d+/g);
+const day = dayMatch ? dayMatch[0] : null;
 
 const post = info.find((poem) => {
-  const fecha = new Date(poem.date).getDate();
-  return fecha.toString() === day;
-});
-
-function leo() {
-  const azul = info.find((poem) => {
     const fecha = new Date(poem.date).getDate();
     return fecha.toString() === day;
-  });
-  if (azul) {
-    const fecha = new Date(azul?.date).getDate();
-    const daay = new Date().getDate();
-    console.log(Number(fecha),'dia',Number(daay));
-    if (Number(fecha) >= Number(daay)) {
-        console.log('prueba' )
-      Astro.redirect("/espera-un-poco");
+});
+
+if (post) {
+    const availableDay = new Date(post?.date);
+    const Today = new Date();
+    if (availableDay > Today) {
+        return Astro.redirect('/espera-un-poco');
     }
-  }
-
 }
-
-
 ---
 
 <Layout title=`${post?.tittle}`>
-  <div class="flex flex-row justify-between items-center mt-4">
-    <button class="text-xl mx-6" onclick="history.back()">
-      <img class="w-8 h-10 m-1" src="/svg/backArrow.svg" alt="back" />
-    </button>
-    <a
-      class="text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700"
-      href="/">Volver al inicio</a
-    >
-
-    {
-      day && (
-        <a class="text-xl mx-6" href={`/dia/regalo-del-${Number(day) + 1}`}>
-          <img
-            class="w-8 h-10 m-1"
-            src="/svg/forwardArrow.svg"
-            alt="next page"
-          />
-        </a>
-      )
-    }
-  </div>
-  <div
-    class="flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center"
-  >
-    <main
-      class="flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-1/2 italic"
-    >
-      <h1 class="text-3xl">{dia.replace(/-/g, " ")}</h1>
-
-      <div
-        class="flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2"
-      >
-        <p class="text-lg italic w-5/6 text-center text-balance">
-          {post?.poem} Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Aspernatur laudantium maiores et nemo necessitatibus voluptas facilis quae
-          at temporibus, libero odit nulla enim consectetur quis rem corrupti provident
-          unde laboriosam!
-        </p>
-        <div
-          class="flex flex-col justify-center items-center gap-2 w-3/4 h-3/4"
+    <div class='flex flex-row justify-between items-center mt-4'>
+        <button class='text-xl mx-6' onclick='history.back()'>
+            <img class='w-8 h-10 m-1' src='/svg/backArrow.svg' alt='back' />
+        </button>
+        <a
+            class='text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700'
+            href='/'>Volver al inicio</a
         >
-          <h2 class="text-2xl"></h2>
-          <img
-            class="object-cover rounded-md"
-            src={post?.backImagen}
-            alt={post?.tittle}
-          />
-          <a
-            class="flex flex-row justify-center items-center gap-2 text-balance"
-            rel="noopener"
-            href={post?.giftLink}
-            target="_blank"
-          >
-            <img class="w-6 h-6" src="/Spotify_icon.svg" alt="spotify" />
-            Reproducir cancion ' {post?.tittle.toLocaleLowerCase()} '
-          </a>
-        </div>
-      </div>
-    </main>
-  </div>
+
+        {
+            day && (
+                <a
+                    class='text-xl mx-6'
+                    href={`/dia/regalo-del-${Number(day) + 1}`}
+                >
+                    <img
+                        class='w-8 h-10 m-1'
+                        src='/svg/forwardArrow.svg'
+                        alt='next page'
+                    />
+                </a>
+            )
+        }
+    </div>
+    <div
+        class='flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center'
+    >
+        <main
+            class='flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-1/2 italic'
+        >
+            <h1 class='text-3xl'>{dia?.replace(/-/g, ' ')}</h1>
+
+            <div
+                class='flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2'
+            >
+                <p class='text-lg italic w-5/6 text-center text-balance'>
+                    {post?.poem} Lorem ipsum, dolor sit amet consectetur adipisicing
+                    elit. Aspernatur laudantium maiores et nemo necessitatibus voluptas
+                    facilis quae at temporibus, libero odit nulla enim consectetur
+                    quis rem corrupti provident unde laboriosam!
+                </p>
+                <div
+                    class='flex flex-col justify-center items-center gap-2 w-3/4 h-3/4'
+                >
+                    <h2 class='text-2xl'></h2>
+                    <img
+                        class='object-cover rounded-md'
+                        src={post?.backImagen}
+                        alt={post?.tittle}
+                    />
+                    <a
+                        class='flex flex-row justify-center items-center gap-2 text-balance'
+                        rel='noopener'
+                        href={post?.giftLink}
+                        target='_blank'
+                    >
+                        <img
+                            class='w-6 h-6'
+                            src='/Spotify_icon.svg'
+                            alt='spotify'
+                        />
+                        Reproducir cancion ' {post?.tittle.toLocaleLowerCase()} '
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
 </Layout>
