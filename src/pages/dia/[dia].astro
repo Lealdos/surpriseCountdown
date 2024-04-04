@@ -16,6 +16,7 @@ const post = info.find((poem) => {
 if (post) {
     const availableDay = new Date(post?.date);
     const Today = new Date();
+    console.log(typeof(Today))
     if (availableDay > Today) {
         return Astro.redirect('/espera-un-poco');
     }

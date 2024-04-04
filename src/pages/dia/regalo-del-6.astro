@@ -12,6 +12,7 @@ const post = info.find((poem) => {
 if (post) {
     const availableDay = new Date(post?.date);
     const Today = new Date();
+    
     if (availableDay > Today) {
         // return Astro.redirect('/espera-un-poco');
     }
@@ -58,13 +59,13 @@ if (post) {
                 >
                     <img
                         class='lg:w-full lg:h-2/4 rounded-md'
-                        src='/entrada.jpg'
+                        src='/img/fecha.webp'
                         alt='entrada a voz veis'
                     />
                     <a
                         class='text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700'
-                        href='/concierto.pdf'
-                        download='/concierto.pdf'>Descargar entrada</a
+                        href='/img/entrada.png'
+                        download='/img/entrada.png'>Descargar entrada</a
                     >
                 </div>
             </div>
