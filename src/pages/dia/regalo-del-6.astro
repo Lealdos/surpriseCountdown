@@ -9,13 +9,11 @@ const post = info.find((poem) => {
     return fecha.toString() === '6';
 });
 
-console.log(post);
 if (post) {
     const availableDay = new Date(post?.date);
     const Today = new Date();
     if (availableDay > Today) {
-        console.log('available');
-        return Astro.redirect('/espera-un-poco');
+        // return Astro.redirect('/espera-un-poco');
     }
 }
 ---

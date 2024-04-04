@@ -58,29 +58,25 @@ if (post) {
             <div
                 class='flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2'
             >
-                <p class='text-lg italic w-5/6 text-center text-balance'>
-                    {post?.poem} Lorem ipsum, dolor sit amet consectetur adipisicing
-                    elit. Aspernatur laudantium maiores et nemo necessitatibus voluptas
-                    facilis quae at temporibus, libero odit nulla enim consectetur
-                    quis rem corrupti provident unde laboriosam!
+                <p class='text-xl italic w-5/6 text-center text-balance'>
+                    {post?.poem}
                 </p>
                 <div
                     class='flex flex-col justify-center items-center gap-2 w-3/4 h-3/4'
                 >
-                    <h2 class='text-2xl'></h2>
                     <img
                         class='object-cover rounded-md'
                         src={post?.backImagen}
                         alt={post?.tittle}
                     />
                     <a
-                        class='flex flex-row justify-center items-center gap-2 text-balance'
+                        class='flex flex-row justify-center items-center gap-2 text-balance text-lg rounded-md italic'
                         rel='noopener'
                         href={post?.giftLink}
                         target='_blank'
                     >
                         <img
-                            class='w-6 h-6'
+                            class='w-8 h-auto'
                             src='/Spotify_icon.svg'
                             alt='spotify'
                         />
