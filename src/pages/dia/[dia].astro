@@ -16,7 +16,7 @@ const post = info.find((poem) => {
 if (post) {
     const availableDay = new Date(post?.date);
     const Today = new Date();
-    console.log(typeof(Today))
+    console.log(typeof Today);
     if (availableDay > Today) {
         return Astro.redirect('/espera-un-poco');
     }
@@ -57,31 +57,37 @@ if (post) {
             <h1 class='text-3xl'>{dia?.replace(/-/g, ' ')}</h1>
 
             <div
-                class='flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2'
+                class='rounded-md flex flex-col sm:flex-row-reverse justify-start items-center gap-8 p-2 sm:justify-around'
             >
-                <p class='text-xl italic w-5/6 text-center text-balance'>
+                <p class='text-xl italic text-center text-balance sm:w-2/4'>
                     {post?.poem}
                 </p>
-                <div
-                    class='flex flex-col justify-center items-center gap-2 w-3/4 h-3/4'
-                >
-                    <img
-                        class='object-cover rounded-md'
-                        src={post?.backImagen}
-                        alt={post?.tittle}
-                    />
+                <div class='flex flex-col justify-start items-center gap-2'>
                     <a
-                        class='flex flex-row justify-center items-center gap-2 text-balance text-lg rounded-md italic'
+                        class='grid grid-cols-1 justify-center items-center gap-2 text-balance text-lg rounded-md italic'
                         rel='noopener'
                         href={post?.giftLink}
                         target='_blank'
                     >
                         <img
-                            class='w-8 h-auto'
-                            src='/Spotify_icon.svg'
-                            alt='spotify'
+                            class='object-cover rounded-md'
+                            src={post?.backImagen}
+                            alt={post?.tittle}
                         />
-                        Reproducir cancion ' {post?.tittle.toLocaleLowerCase()} '
+                        <div
+                            class='flex flex-row justify-center items-center gap-2'
+                        >
+                            <img
+                                class='w-8 h-auto'
+                                src='/Spotify_icon.svg'
+                                alt='spotify'
+                            />
+                            <span
+                                >Reproducir cancion ' {
+                                    post?.tittle.toLocaleLowerCase()
+                                } '</span
+                            >
+                        </div>
                     </a>
                 </div>
             </div>

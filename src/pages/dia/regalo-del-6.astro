@@ -12,9 +12,9 @@ const post = info.find((poem) => {
 if (post) {
     const availableDay = new Date(post?.date);
     const Today = new Date();
-    
+
     if (availableDay > Today) {
-        // return Astro.redirect('/espera-un-poco');
+        return Astro.redirect('/espera-un-poco');
     }
 }
 ---
