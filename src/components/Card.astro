@@ -9,8 +9,9 @@ interface Props {
     backImage: string;
     indexControl?: number;
     giftLink?: string;
+    message?: string;
 }
-const { song, poem, date, imagen, backImage, giftLink } = Astro.props;
+const { song, date, imagen, backImage, giftLink, message } = Astro.props;
 const weekday = [
     'Domingo',
     'Lunes',
@@ -88,19 +89,16 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
                 <img src='/Spotify_icon.svg' alt='spotify' />
                 Reproducir cancion
             </a>
-            <p class='text-pink-500 italic truncate text-lg'>
-                {poem}
+            <p class='text-pink-500 italic  text-lg'>
+                {message}
             </p>
 
             <a
                 href={`/dia/regalo-del-${fecha}`}
-                class='rounded-md bg-pink-500 p-[0.3rem] hover:bg-pink-700'
+                class='rounded-md bg-pink-500 p-[0.5rem] hover:bg-pink-700'
             >
-                poema completo
+                ir al regalo
             </a>
-            <button class='rounded-md bg-pink-500 p-1 hover:bg-pink-700 w-20'
-                >Cerrar</button
-            >
         </div>
     </article>
 </div>
@@ -140,8 +138,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
 
     p {
         margin: 0 0.5rem;
-        max-width: 22.5em;
-
+        min-width: 19.5em;
         text-align: center;
     }
 
