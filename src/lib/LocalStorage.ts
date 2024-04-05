@@ -30,4 +30,3 @@ export function setToLocalStorage<T>(key: string, value: T): void {
     }
 }
 
-// Function to create or update an item
