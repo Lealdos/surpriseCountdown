@@ -53,7 +53,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         >
             <h2 class='text-xl w-10/12 text-balance text-center'>
                 Regalo disponible el dia: {dayName}
-                {fecha - 1} de
+                {fecha} de
                 {monthName}
             </h2>
             <Countdown date={date} client:only='react' />
