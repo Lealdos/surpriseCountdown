@@ -51,7 +51,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         <div
             class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly sm:w-[21.5em]'
         >
-            <h2 class='text-xl w-10/12 text-balance text-center'>
+            <h2 class='text-2xl w-10/12 text-balance text-center'>
                 Regalo disponible el dia: {dayName}
                 {fecha} de
                 {monthName}
@@ -77,11 +77,11 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         <div
             class='flex flex-col items-center bg-black/80 rounded-md p-1 h-[500px] justify-evenly sm:w-[21.5em]'
         >
-            <h2 class='text-xl w-10/12 text-balance text-center'>
+            <h2 class='text-2xl w-10/12 text-balance text-center'>
                 La cancion de hoy es: <br />{song}
             </h2>
             <a
-                class='flex flex-row justify-center items-center gap-2'
+                class='flex flex-row justify-center items-center gap-2 text-xl'
                 rel='noopener'
                 href={giftLink}
                 target='_blank'
@@ -89,13 +89,13 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
                 <img src='/Spotify_icon.svg' alt='spotify' />
                 Reproducir cancion
             </a>
-            <p class='text-pink-500 italic text-lg'>
+            <p class='text-pink-500 italic text-2xl'>
                 {message}
             </p>
 
             <a
                 href={`/dia/regalo-del-${fecha}`}
-                class='rounded-md bg-pink-500 p-[0.5rem] hover:bg-pink-700'
+                class='rounded-md bg-pink-500 p-[0.5rem] hover:bg-pink-700 text-2xl'
             >
                 ir al regalo
             </a>
@@ -138,8 +138,8 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
 
     p {
         margin: 0 0.5rem;
-        min-width: 17.4em;
-        max-width: 17.4em;
+        max-width: 15.2em;
+        min-width: 12.2em;
         text-align: center;
     }
 

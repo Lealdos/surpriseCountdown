@@ -25,7 +25,7 @@ if (post) {
             <img class='w-8 h-10 m-1' src='/svg/backArrow.svg' alt='back' />
         </button>
         <a
-            class='text-lg bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700'
+            class='text-xl bg-fuchsia-500 rounded-md p-2 hover:bg-fuchsia-700'
             href='/'>Volver al inicio</a
         >
 
@@ -42,21 +42,21 @@ if (post) {
         class='flex flex-col justify-center items-center gap-4 my-16 mx-4 content-center'
     >
         <main
-            class='flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/60 p-4 rounded-md md:w-4/6'
+            class='flex flex-col justify-center items-center gap-4 my-0 mx-auto bg-fuchsia-800/70 p-4 rounded-md md:w-4/6'
         >
-            <h1 class='text-3xl'>Te amo mi julieta, feliz cumpleaños</h1>
+            <h1 class='text-3xl text-balance text-center'>
+                Te amo mi julieta, feliz cumpleaños
+            </h1>
             <div
                 class='flex sm:flex-row-reverse flex-col justify-evenly sm:items-start items-center gap-2'
             >
-                <p class='text-lg italic w-5/6 text-center text-balance'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Aspernatur laudantium maiores et nemo necessitatibus
-                    voluptas facilis quae at temporibus, libero odit nulla enim
-                    consectetur quis rem corrupti provident unde laboriosam!
+                <p class='text-2xl italic w-5/6 text-center text-balance'>
+                    {post?.poem}
                 </p>
                 <div
-                    class='flex flex-col justify-center items-center gap-2 w-3/4 h-3/4'
+                    class='flex flex-col justify-center items-center gap-2 w-3/4 h-3/4 text-2xl'
                 >
+                    Aqui la entrada a tu concierto
                     <img
                         class='lg:w-full lg:h-2/4 rounded-md'
                         src='/img/fecha.webp'
@@ -68,6 +68,29 @@ if (post) {
                         download='/img/entrada.png'>Descargar entrada</a
                     >
                 </div>
+            </div>
+            <div class='flex flex-col justify-start items-center gap-2'>
+                <a
+                    class='grid grid-cols-1 justify-center items-center gap-2 text-balance text-lg rounded-md italic'
+                    rel='noopener'
+                    href={post?.giftLink}
+                    target='_blank'
+                >
+                    <div
+                        class='flex flex-row justify-center items-center gap-2'
+                    >
+                        <img
+                            class='w-8 h-auto'
+                            src='/Spotify_icon.svg'
+                            alt='spotify'
+                        />
+                        <span class='text-3xl text-center'
+                            >Reproducir cancion ' {
+                                post?.tittle.toLocaleLowerCase()
+                            } '</span
+                        >
+                    </div>
+                </a>
             </div>
         </main>
     </div>

@@ -22,7 +22,7 @@ export function Countdown({ date }: Props) {
         return <p className='text-2xl'>Listo para abrir</p>;
     } else {
         return (
-            <p className=' text-balance text-center text-yellow-500 font-semibold italic text-xl'>
+            <p className=' text-balance text-center text-yellow-500 font-semibold italic text-2xl'>
                 Faltan <br />
                 {countdown?.days}D / {countdown?.hours}H / {countdown?.minutes}M
                 /{countdown?.seconds}S <br />
