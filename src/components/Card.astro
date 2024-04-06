@@ -53,7 +53,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
         >
             <h2 class='text-xl w-10/12 text-balance text-center'>
                 Regalo disponible el dia: {dayName}
-                {fecha} de
+                {fecha - 1} de
                 {monthName}
             </h2>
             <Countdown date={date} client:only='react' />
@@ -89,7 +89,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
                 <img src='/Spotify_icon.svg' alt='spotify' />
                 Reproducir cancion
             </a>
-            <p class='text-pink-500 italic  text-lg'>
+            <p class='text-pink-500 italic text-lg'>
                 {message}
             </p>
 
