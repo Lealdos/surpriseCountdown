@@ -89,21 +89,20 @@
 //   };
 // }
 
+export function calculateCountdown(date: string) {
+    const targetDate = new Date(date);
+    const now = new Date();
+    if (targetDate < now) {
+        return null;
+    }
+    const difference = targetDate.getTime() - now.getTime();
 
-export function calculateCountdown(date:string) {
-  const targetDate = new Date(date);
-  const now = new Date();
-  if (targetDate < now) {
-    return null;
-  }
-  const difference = targetDate.getTime() - now.getTime();
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-  return { days, hours, minutes, seconds };
+    return { days, hours, minutes, seconds };
 }
