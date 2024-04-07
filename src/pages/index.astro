@@ -5,9 +5,9 @@ import { info } from '../data.json';
 ---
 
 <Layout title='Regalo de concierto'>
-    <main class=''>
+    <main>
         {
-            info.map((item, index) => {
+            info.map((item) => {
                 return (
                     <Card
                         date={item.date}
@@ -15,7 +15,6 @@ import { info } from '../data.json';
                         backImage={item.backImagen}
                         song={item.tittle}
                         poem={item.poem}
-                        indexControl={index}
                         giftLink={item.giftLink}
                         message={item.message}
                     />
