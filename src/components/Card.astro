@@ -11,7 +11,7 @@ interface Props {
     giftLink?: string;
     message: string;
 }
-const { song, date, imagen, backImage, giftLink, message } = Astro.props;
+const { song, date, imagen, giftLink, message } = Astro.props;
 const weekday = [
     'Domingo',
     'Lunes',
@@ -37,7 +37,6 @@ const month = [
 ];
 const monthName = month[new Date(date).getMonth()];
 const fecha = new Date(date).getDate();
-console.log(fecha);
 const day = weekday[new Date(date).getDay()];
 
 const countDownFinish = calculateCountdown(date) === null ? false : true;
