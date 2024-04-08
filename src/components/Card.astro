@@ -37,13 +37,13 @@ const month = [
 ];
 const monthName = month[new Date(date).getMonth()];
 const fecha = new Date(date).getDate();
+console.log(fecha);
 const day = weekday[new Date(date).getDay()];
-const dayName = day;
 
 const countDownFinish = calculateCountdown(date) === null ? false : true;
 ---
 
-<div class='card' id={fecha.toString()}>
+<div class='card'>
     <article
         class='card-front bg-cover bg-center rounded-md flex flex-col justify-between'
         style=`background-image: url(${imagen}); `
@@ -52,7 +52,7 @@ const countDownFinish = calculateCountdown(date) === null ? false : true;
             class='flex flex-col items-center bg-black/70 rounded-md p-1 h-[500px] justify-evenly sm:w-[21.5em]'
         >
             <h2 class='text-2xl w-10/12 text-balance text-center'>
-                Regalo disponible el dia: {dayName}
+                Regalo disponible el dia: {day}
                 {fecha} de
                 {monthName}
             </h2>
