@@ -9,5 +9,7 @@ export default defineConfig({
     integrations: [tailwind(), react()],
     scripts: [{ src: '/path/to/countdown.js', type: 'module' }],
     output: 'hybrid',
-    adapter: vercel(),
+    adapter: vercel({
+        webAnalytics: { enabled: true },
+    }),
 });

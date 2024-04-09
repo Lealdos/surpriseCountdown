@@ -38,12 +38,12 @@
         },
         {
             "tittle": "Dame un Día",
-            "poem": "Las palabras se entrelazan en el papel, como la voz de Voz Veis se entrelaza con el corazón.",
-            "date": "April 9, 2024 13:35:05 GMT-5",
+            "poem": "Regalame tan solo un dia, vamos a olvidar por un dia las razones que tienes para no estar conmigo, y verás cómo se transforman en razones cada vez más insignificantes al lado de tanta felicidad que podemos sembrar juntos. Vamos a fingir demencia por un momento, olvidar las consecuencias o las dudas con nos acomplejan, comenzando una un nuevo presente, en este dia que tenemos, para decirnos libremente lo que sentimos para confesarnos deseos sin miedo a comprometernos. Vamos a regalarnos la posibilidad de sentir lo que seriamos juntos, lo que lograríamos juntos, entregarnos plenamente por varias horas, porque tengo la certeza de que al dia siguiente serás tú quien me pida mas que tan solo un dia.",
+            "date": "April 9, 2024 00:00:0 ",
             "FrontImagen": "/img/prueba.webp",
-            "backImagen": "/img/001.webp",
-            "giftLink": "https://open.spotify.com/track/22ewStXOLuH7DpSuNyo0qs?si=d998204d882d49f5",
-            "message": "Ayer hubo un eclipse "
+            "backImagen": "/img/unDia.jpg",
+            "giftLink": "https://open.spotify.com/track/36P05XxNiRGMLJKSSHiFCZ?si=56743226744c4a7a",
+            "message": "Así como la luna y el sol fueron capaces de besarse y estar juntos por un dia, nuestras manos también se entrelazaran, que la vida Dios y nosotros mismo nos permitamos la dicha de tener tan solo un dia, un dia capaz de marcar el inicio del comienzo de nuestras vidas. "
         },
         {
             "tittle": "Amor secreto",
@@ -55,7 +55,7 @@
             "message": ""
         },
         {
-            "tittle": "Qué me has hecho tú",
+            "tittle": "Aunque sea poco",
             "poem": "Una historia de amor y desamor, de encuentros y desencuentros.",
             "date": "April 11, 2024 13:35:05 GMT-5",
             "FrontImagen": "/img/prueba.webp",
@@ -64,7 +64,7 @@
             "message": ""
         },
         {
-            "tittle": "Aunque Sea Poco",
+            "tittle": "Pa que no me puedas olvidar",
             "poem": "A veces, lo poco es suficiente para hacer la diferencia.",
             "date": "April 12, 2024 13:35:05 GMT-5",
             "FrontImagen": "/img/prueba.webp",
@@ -73,7 +73,7 @@
             "message": ""
         },
         {
-            "tittle": "Gira que Gira",
+            "tittle": "",
             "poem": "La vida es un constante movimiento, una gira que gira sin parar.",
             "date": "April 13, 2024 10:35:05 GMT-5",
             "FrontImagen": "/img/prueba.webp",
